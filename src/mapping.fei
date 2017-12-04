@@ -117,6 +117,8 @@
  !5-c <Add_8NodeBrick_SurfaceLoad{PhyEntyTag,PhyEntyTag,Pressure}>                                                                                                                                             add load # {} to element # {} type surface at nodes ({} , {} , {} , {}) with magnitude {};
  !5-c <Add_8NodeBrick_SurfaceLoad{PhyEntyTag,PhyEntyTag,Press1,Press2,Press3,Press4}>                                                                                                                          add load # {} to element # {} type surface at nodes ({} , {} , {} , {}) with magnitudes ({} , {} , {} , {});
 
+ !5-c <Add_solid_fluid_interface{PhyEntyTag,PhyEntyTag}>                                                                                                                                                       add solid fluid interface load # {} to element # {} with nodes ({} , {} , {} , {});
+ !5-c <Add_fluid_surface_deforming_motion{PhyEntyTag,PhyEntyTag}>                                                                                                                                              add load # {} to element # {} type fluid surface deforming motion at nodes ({} , {} , {} , {}); 
 // Elemental Commands   ------    4-node tetrahedron.
 // Elemental Commands   ------    5-node pyramid.
 // Elemental Commands   ------    6-node prism.
@@ -236,7 +238,7 @@
    !1 <Add_SoftContact{PhyEntyTag,InitialNormalStiffness,Stiffningrate,max_normal_stiffness,TangentialStiffness,NormalDamping,TangentialDamping,FrictionRatio,NormVect_x,NormVect_y,NormVect_z}>                                    add element # {} type SoftContact with nodes ({}, {}) initial_normal_stiffness = {} stiffning_rate = {} max_normal_stiffness = {} tangential_stiffness = {} normal_damping = {} tangential_damping = {}  friction_ratio = {}  contact_plane_vector = ({}, {}, {} );
    !1 <Add_CoupledSoftContact{PhyEntyTag,InitialNormalStiffness,Stiffningrate,TangentialStiffness,NormalDamping,TangentialDamping,FrictionRatio,NormVect_x,NormVect_y,NormVect_z}>                             add element # {} type CoupledSoftContact with nodes ({}, {}) initial_normal_stiffness = {} stiffning_rate = {} max_normal_stiffness = {} tangential_stiffness = {} normal_damping = {} tangential_damping = {}  friction_ratio = {}  contact_plane_vector = ({}, {}, {} );
    !1 <Add_Truss{PhyEntyTag,material#1,CrossSectin,Density}>                                                                                                                                                   add element # {} type truss with nodes ({}, {}) use material # {} cross_section = {} mass_density = {} ;
-
+   !1 <Add_BondedContact{PhyEntyTag, PenaltyStiffness}>                                                                                                                                                        add element # {} type BondedContact with nodes ({}, {}) penalty_stiffness = {};
 // Elemental Commands   ------    Element-cum-physicalgroup commands
 // Elemental Commands   ------    4-node quadrangle.
 
@@ -248,6 +250,7 @@
 // Elemental Commands   ------    8-node hexahedron.
 
    !5 <Add_8NodeBrick{PhyEntyTag,material#1}>                                                                                                                                                                  add element # {} type 8NodeBrick with nodes ({}, {}, {}, {}, {}, {}, {}, {}) use material # {};
+   !5 <Add_8NodeBrick_fluid_incompressible_up{PhyEntyTag,rho_w,rho_a,alpha}>                                                                                                                                   add element # {} type 8NodeBrick_fluid_incompressible_up with nodes ({}, {}, {}, {}, {}, {}, {}, {}) rho_w = {} rho_a= {} alpha = {};
    !5 <Add_8NodeBrick_Variable_GaussPoints{PhyEntyTag,NumGaussPoints,material#1}>                                                                                                                              add element # {} type 8NodeBrick using {} Gauss points each direction with nodes ({}, {}, {}, {}, {}, {}, {}, {}) use material # {};
    !5 <Add_8NodeBrick_upU{PhyEntyTag,material#1,Porosity,Alpha,SolidDensity,FluidDensity,Perm_X,Perm_Y,Perm_Z,SolidBulkModulus,FluidBulkModulus}>                                                              add element # {} type 8NodeBrick_upU with nodes ({}, {}, {}, {}, {}, {}, {}, {}) use material # {} porosity = {} alpha = {}  rho_s = {}  rho_f = {} k_x = {}  k_y = {}  k_z = {}  K_s = {} K_f = {};
    !5 <Add_8NodeBrick_upU_Variable_GaussPoints{PhyEntyTag,NumGaussPoints,material#1,Porosity,Alpha,SolidDensity,FluidDensity,Perm_X,Perm_Y,Perm_Z,SolidBulkModulus,FluidBulkModulus}>                          add element # {} type 8NodeBrick_upU using {} Gauss points each direction with nodes ({}, {}, {}, {}, {}, {}, {}, {}) use material # {} porosity = {} alpha = {}  rho_s = {}  rho_f = {} k_x = {}  k_y = {}  k_z = {}  K_s = {} K_f = {};
